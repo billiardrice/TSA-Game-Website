@@ -1,84 +1,167 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+@import url('https://rsms.me/inter/inter-ui.css');
+
+::selection {
+    background: #2D2F36;
 }
 
-html {
-  background: #95a5a6;
-  font-family: "Helvetica Neue", Arial, Sans-Serif;
+::-webkit-selection {
+    background: #2D2F36;
 }
-html .login-wrap {
-  position: relative;
-  margin: 0 auto;
-  background: #ecf0f1;
-  width: 350px;
-  border-radius: 5px;
-  box-shadow: 3px 3px 10px #333;
-  padding: 15px;
+
+::-moz-selection {
+    background: #2D2F36;
 }
-html .login-wrap h2 {
-  text-align: center;
-  font-weight: 200;
-  font-size: 2em;
-  margin-top: 10px;
-  color: #34495e;
+
+body {
+    background: white;
+    font-family: 'Inter UI', sans-serif;
+    margin: 0;
 }
-html .login-wrap .form {
-  padding-top: 20px;
+
+.page {
+    background: #e2e2e5;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    position: absolute;
+    place-content: center;
 }
-html .login-wrap .form input[type="text"],
-html .login-wrap .form input[type="password"],
-html .login-wrap .form button {
-  width: 80%;
-  margin-left: 10%;
-  margin-bottom: 25px;
-  height: 40px;
-  border-radius: 5px;
-  outline: 0;
-  outline-style: none;
+
+@media (max-width: 767px) {
+    .page {
+        height: auto;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+    }
 }
-html .login-wrap .form input[type="text"],
-html .login-wrap .form input[type="password"] {
-  border: 1px solid #bbb;
-  padding: 0 0 0 10px;
-  font-size: 14px;
+
+.container {
+    display: flex;
+    height: fit-content;
+    margin: 0 auto;
+    width: 640px;
 }
-html .login-wrap .form input[type="text"]:focus,
-html .login-wrap .form input[type="password"]:focus {
-  border: 1px solid #3498db;
+
+@media (max-width: 767px) {
+    .container {
+        flex-direction: column;
+        height: 630px;
+        width: 320px;
+    }
 }
-html .login-wrap .form a {
-  text-align: center;
-  font-size: 10px;
-  color: #3498db;
+
+.left {
+    background: white;
+    height: calc(100% - 40px);
+    top: 20px;
+    position: relative;
+    width: 50%;
 }
-html .login-wrap .form a p {
-  padding-bottom: 10px;
+
+@media (max-width: 767px) {
+    .left {
+        height: 100%;
+        left: 20px;
+        width: calc(100% - 40px);
+        max-height: 270px;
+    }
 }
-html .login-wrap .form button {
-  background: #e74c3c;
-  border: none;
-  color: white;
-  font-size: 18px;
-  font-weight: 200;
-  cursor: pointer;
-  transition: box-shadow 0.4s ease;
+
+.login {
+    font-size: 50px;
+    font-weight: 900;
+    margin: 50px 40px 40px;
 }
-html .login-wrap .form button:hover {
-  box-shadow: 1px 1px 5px #555;
+
+.eula {
+    color: #999;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 40px;
 }
-html .login-wrap .form button:active {
-  box-shadow: 1px 1px 7px #222;
+
+.right {
+    background: #474A59;
+    height: 400px;
+    box-shadow: 0px 0px 40px 16px rgba(0, 0, 0, 0.22);
+    color: #F1F1F2;
+    position: relative;
+    width: 50%;
 }
-html .login-wrap:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: -webkit-linear-gradient(left, #27ae60 0%, #27ae60 20%, #8e44ad 20%, #8e44ad 40%, #3498db 40%, #3498db 60%, #e74c3c 60%, #e74c3c 80%, #f1c40f 80%, #f1c40f 100%);
-  background: -moz-linear-gradient(left, #27ae60 0%, #27ae60 20%, #8e44ad 20%, #8e44ad 40%, #3498db 40%, #3498db 60%, #e74c3c 60%, #e74c3c 80%, #f1c40f 80%, #f1c40f 100%);
-  height: 5px;
-  border-radius: 5px 5px 0 0;
+
+@media (max-width: 767px) {
+    .right {
+        flex-shrink: 0;
+        height: 100%;
+        width: 100%;
+        max-height: 350px;
+    }
+}
+
+svg {
+    position: absolute;
+    width: 320px;
+}
+
+path {
+    fill: none;
+    stroke: url(#linearGradient);
+    ;
+    stroke-width: 4;
+    stroke-dasharray: 240 1386;
+}
+
+.form {
+    margin: 40px;
+    position: absolute;
+}
+
+label {
+    color: #c2c2c5;
+    display: block;
+    font-size: 14px;
+    height: 16px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+input {
+    background: transparent;
+    border: 0;
+    color: #f2f2f2;
+    font-size: 20px;
+    height: 30px;
+    line-height: 30px;
+    outline: none !important;
+    width: 100%;
+}
+
+input::-moz-focus-inner {
+    border: 0;
+}
+
+#submit {
+    color: #707075;
+    margin-top: 40px;
+    transition: color 300ms;
+}
+
+#submit:focus {
+    color: #f2f2f2;
+}
+
+#submit:active {
+    color: #d0d0d2;
+}
+
+a {
+    background: transparent;
+    border: 0;
+    color: #f2f2f2;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    outline: none !important;
+    width: 100%;
 }
