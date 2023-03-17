@@ -1,40 +1,49 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <title>TSA GAMES</title>
-    <meta name="viewport" content="width=device-width">
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/login.css') }}">
-    <script src="{{ url_for('static',filename='js/login.js') }}"></script>
-    <script src="{{ url_for('static',filename='js/anime.min.js') }}"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="William Rice">
+    <title>TSA Games Register</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="{{ url_for('static',filename='styles/register.css') }}" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{{ url_for('static',filename='js/register.js') }}"></script>
 </head>
 
-<body>
-    <div class="page">
-        <div class="container">
-            <div class="left">
-                <div class="login">Login</div>
-                <div class="eula">
-                    By logging in you agree to the ridiculously long terms that you didn't bother to read
-                </div>
-            </div>
-            <div class="right">
-                <form action="/reg" method="POST">
-                    <div class="form">
-                        <label for="username">Username</label>
-                        <input type="username" id="username" name="username">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" name="password">
-                        <input type="submit" id="submit" value="Submit">
-                        <a href="/login"> <p> Have an account? Login </p></a>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</body>
+<body class="text-center">
 
+    <main class="form-signin w-100 m-auto">
+        <div class="alert alert-dark" role="alert">
+            <form action="/reg" method="POST">
+                <h1 class="h3 mb-3 fw-normal">Register</h1>
+
+                <div class="form-floating">
+                    <input type="username" class="form-control" id="floatingInput" placeholder="name" name="username">
+                    <label for="floatingInput">Username</label>
+                </div>
+                <div class="form-floating">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"
+                        name="email">
+                    <label for="floatingInput">Email address</label>
+                </div>
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
+                        name="password">
+                    <label for="floatingPassword">Password</label>
+                </div>
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Profile Picture</label>
+                    <input class="form-control" type="file" id="formFile" placeholder="Profile Picture">
+                </div>
+
+                <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
+                <a href="/login">Already have an account? Login</a>
+            </form>
+        </div>
+    </main>
+
+</body>
 </html>

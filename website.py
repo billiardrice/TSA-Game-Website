@@ -1,5 +1,5 @@
-from flask import Flask, render_template, make_response, redirect, request, session
-from database import Database
+from flask import Flask, render_template, make_response, redirect, request, session, jsonify, url_for
+from database import Database, AccountNotFound, PasswordIncorrect
 from auth import Account
 import os
 
@@ -34,14 +34,15 @@ def registerAccount():
     return redirect('/login')
 
 @app.route('/auth', methods=['POST'])
-def authenticateAccount():
-    account = Account(request.form['email'], request.form['password'])
+def authenticate():
+    account = Account(request.json['email'], request.json['password'])
     try:
         db.login(account)
     except Exception as e:
-        return str(e)
+        return jsonify({'error': str(e)})
+
     session['logged_in'] = True
-    return "logged in successfully"
+    return jsonify({'redirect': '/'})
 
 @app.after_request
 def add_header(response):

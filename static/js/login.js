@@ -1,52 +1,25 @@
-window.onload = function () {
+$(document).ready(function () {
+    $('form').on('submit', function (event) {
+        $.ajax({
+            type: 'POST',
+            url: '/auth',
+            data: JSON.stringify({
+                'email': $('#email').val(),
+                'password': $('#password').val()
+            }),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json"
+        })
+            .done(function (data) {
+                if (data.error) {
+                    $('#alert').text(data.error).show()
+                }
+                else {
+                    window.location = data.redirect;
+                }
+            });
 
-    var current = null;
-    document.querySelector('#email').addEventListener('focus', function (e) {
-        if (current) current.pause();
-        current = anime({
-            targets: 'path',
-            strokeDashoffset: {
-                value: 0,
-                duration: 700,
-                easing: 'easeOutQuart'
-            },
-            strokeDasharray: {
-                value: '240 1386',
-                duration: 700,
-                easing: 'easeOutQuart'
-            }
-        });
+        event.preventDefault();
+
     });
-    document.querySelector('#password').addEventListener('focus', function (e) {
-        if (current) current.pause();
-        current = anime({
-            targets: 'path',
-            strokeDashoffset: {
-                value: -336,
-                duration: 700,
-                easing: 'easeOutQuart'
-            },
-            strokeDasharray: {
-                value: '240 1386',
-                duration: 700,
-                easing: 'easeOutQuart'
-            }
-        });
-    });
-    document.querySelector('#submit').addEventListener('focus', function (e) {
-        if (current) current.pause();
-        current = anime({
-            targets: 'path',
-            strokeDashoffset: {
-                value: -730,
-                duration: 700,
-                easing: 'easeOutQuart'
-            },
-            strokeDasharray: {
-                value: '530 1386',
-                duration: 700,
-                easing: 'easeOutQuart'
-            }
-        });
-    });
-}
+});
